@@ -52,11 +52,6 @@ console.log('路由页面',Pageset)
                     routes:[
                         { path: '/page2/page2-1',
                          component: Pageset['page2-1'],
-                         routes:[{
-                                path: '/page2/page2-1/5',
-                                component:Pageset.page3
-                                }
-                         ]
                         },
                         { path: '/page2/page2-2',
                          component: Pageset['page2-2']

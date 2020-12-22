@@ -4,6 +4,8 @@
 import React from 'react'
 import { NavLink,Switch } from 'react-router-dom';
 
+
+
 class Page2 extends React.Component{
 
   constructor(props){
@@ -22,7 +24,7 @@ class Page2 extends React.Component{
                 </Switch>
                <NavLink to="/page2/page2-1" style={{color:'#fff'}} activeStyle={{color:'red'}}>page2-1</NavLink>
                <NavLink to="/page2/page2-2" style={{color:'#fff'}} activeStyle={{color:'red'}}>page2-2</NavLink>
-
+        
 	       </div>
    }
 
