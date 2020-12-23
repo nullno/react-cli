@@ -8,9 +8,13 @@ import { Progress } from 'antd';
 
 class Page3 extends React.Component{
 
+  constructor(props){
+     super(props)
+      console.log('Page3');
+  }
 
 render(){
-
+     
 	let _router=this.props.$route
   // console.log(_router.match.params);
 

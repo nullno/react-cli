@@ -58,7 +58,7 @@ const webpackConfig  = {
             cacheGroups:{//设置缓存组用来抽取满足不同规则的chunk,下面以生成common、vender为例
                   vendors: { // 基本框架
                      chunks: 'all',
-                     test: /[\\/]node_modules[\\/]/,
+                     test: /node_modules/,
                      priority: 100,
                      name: 'chunk-vendors',
                   },

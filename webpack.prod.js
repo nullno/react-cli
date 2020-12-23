@@ -50,7 +50,7 @@ const htmlPlugin =  new htmlWebpackPlugin({
 /*output css*/
 const  MiniCssExtract   =   new MiniCssExtractPlugin({
             filename: './assets/css/[name]-[hash:6].css',
-            chunkFilename: '[id].css'
+            chunkFilename: './assets/css/chunk-vendors-[hash:6].css'
         })
 
 /*output 配置*/
@@ -98,13 +98,6 @@ const webpackConfig  = {
                   //   name: 'other',
                   //   priority: 80,
                   //  },
-                  styles: {
-                      name: 'chunk-vendors',
-                      test: /\.css$/,
-                      chunks: 'all',
-                      enforce: true,
-                      priority: 0, 
-                    } 
             }
         }
     },
@@ -116,7 +109,6 @@ const webpackConfig  = {
       new BundleAnalyzerPlugin({
         analyzerPort: 8081,
       }),
-       
   
    ],
    // 第三方模块配置规则 'style-loader',
@@ -150,6 +142,7 @@ const webpackConfig  = {
                                
                                 ],
                            },
+
             {test:/\.less$/,use:[
                                     // 'style-loader',
                                     MiniCssExtractPlugin.loader,
@@ -167,7 +160,7 @@ const webpackConfig  = {
                                       'less-loader',
                                                      
                                   ],
-                               }
+                               }               
         ],
     }
   

@@ -13,7 +13,7 @@ import {  Row, Col  } from 'antd'
 
 import NumberOutlined from '@ant-design/icons/NumberOutlined'
 import PhoneOutlined from '@ant-design/icons/PhoneOutlined'
-import PaperClipOutlined from '@ant-design/icons/PhoneOutlined'
+import PaperClipOutlined from '@ant-design/icons/PaperClipOutlined'
 
 export default class Navigation extends React.Component{
 
