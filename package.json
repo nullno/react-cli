@@ -2,7 +2,7 @@
   "name": "react_test",
   "version": "1.0.0",
   "description": "测试",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "dev": "cross-env ENV_PRODUCTION=dev webpack-dev-server --config webpack.dev.js",
     "beta": "cross-env ENV_PRODUCTION=beta webpack --config webpack.prod.js",

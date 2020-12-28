@@ -23,11 +23,12 @@ export default class Navigation extends React.Component{
       	 this.state={
       	 	 a:123
       	 }
+
+
   }
 
   render(){
-    
-                   
+
   	  return <Row className={navCss.nav}>
                <Col span={8}><NavLink to="/" exact activeClassName={navCss.actived}><NumberOutlined className={navCss.anticon}/> <span>Home</span> </NavLink> </Col>
                <Col span={8}><NavLink to="/page2"   activeClassName={navCss.actived}><PhoneOutlined className={navCss.anticon}/><span>Page2</span> </NavLink> </Col>

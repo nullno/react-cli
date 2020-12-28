@@ -7,6 +7,8 @@ import React from 'react'
 import { Button  } from 'antd';
 // DatePicker,,TimePicker
 
+import MyButton from '@/view/component/Button'
+
 
 class Page21 extends React.Component{
 
@@ -22,6 +24,8 @@ class Page21 extends React.Component{
                              <Button type="primary" style={{ marginLeft: 8 }}>
 						      确定
 						    </Button>
+
+						     <MyButton name="button123" o={{a:1,b:2}}></MyButton>
 		              </div>
                             
 		              {this.props.Route}

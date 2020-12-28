@@ -82,3 +82,8 @@
 ### 开发数据可视化项目
     
     https://antv.vision/zh    
+
+
+### 问题
+     
+     JSON.stringify 报错->window.JSON.stringify 就正常

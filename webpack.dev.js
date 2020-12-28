@@ -15,7 +15,7 @@ const definePlugin = new webpack.DefinePlugin({
 })
 
 const autoprefixer = require('autoprefixer');
-
+  
 const webpackConfig  = {
    mode: 'development',
    entry: {
@@ -30,7 +30,7 @@ const webpackConfig  = {
    	 disableHostCheck: true,
      https:true,
      compress: true,
-     port: 3000,
+     port: 3100,
      open:true,
      proxy: {
      '/test': {
@@ -45,7 +45,7 @@ const webpackConfig  = {
 
    },
    devtool: 'inline-source-map',
-
+   target:'web',
    resolve:{
     extensions:['.js','.jsx','.json'],
     alias:{
@@ -109,7 +109,7 @@ const webpackConfig  = {
                                                      ],
                                                      }
         ],
-    }
+    },
   
 };
 
