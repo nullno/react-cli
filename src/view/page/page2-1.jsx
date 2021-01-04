@@ -28,7 +28,7 @@ class Page21 extends React.Component{
 						     <MyButton name="button123" o={{a:1,b:2}}></MyButton>
 		              </div>
                             
-		              {this.props.Route}
+		              <this.props.Route/>
 			       </div>
 		}
 

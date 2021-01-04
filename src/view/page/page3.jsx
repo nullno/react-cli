@@ -16,9 +16,10 @@ class Page3 extends React.Component{
 render(){
      
 	let _router=this.props.$route
-  // console.log(_router.match.params);
+  // console.log(_router.match.params);  <this.props.Route/>
 
 	return <div style={{background:'#fff',minHeight:'200px',margin:'10px'}}> 
+        
               <h1>Page3</h1>
                <div>
                	<Progress percent={30} />

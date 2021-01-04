@@ -78,15 +78,15 @@ const webpackConfig  = {
    // 第三方模块配置规则 'style-loader',
    module: {
         rules: [
-          {test: /\.js|jsx$/, use: 'babel-loader', exclude: /(node_modules|bower_components)/},
+          {test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /(node_modules|bower_components)/},
             
-          {test:/\.ttf|woff|woff2|eot$/,use:{
+          {test:/\.(ttf|woff|woff2|eot)$/,use:{
                                                 loader: 'file-loader',
                                                 options: {name: './assets/font/[name].[ext]'}
                                                 }
                                              },
            
-            {test:/\.svg|png|gif|jpg|jpeg$/,use:{
+            {test:/\.(svg|png|gif|jpg|jpeg)$/,use:{
                                                     loader: 'file-loader',
                                                     options: { name: './assets/img/[name].[ext]'}
                                                     }

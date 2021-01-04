@@ -45,7 +45,7 @@ export default class Home extends React.Component{
 
       }
       componentWillUnmount(){
-      	console.log('un');
+      	// console.log('un');
       }
 
 	  render(){

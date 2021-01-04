@@ -30,6 +30,26 @@
 
  ```   
 
+### 路由嵌套
+    在父级页面里需要的位置添加子路由
+    如果设置redirect，也需要添加才可生效
+    ```
+          <this.props.Route />
+    ```
+
+### 路由嵌套
+    在routes中可便捷添加路由渲染前状态
+     ```
+         function checkRouteInfo (route){
+
+           if(route.auth){
+              return {pass:false,component:()=><div>需要授权</div>}
+           }else{
+             return {pass:true}
+           }
+
+      } 
+     ```  
 
 ### antd  @ant-design/icons 打包过大问题
 

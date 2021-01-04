@@ -14,14 +14,15 @@ class Page2 extends React.Component{
   
 
   render(){
+        
+      const Routes = this.props.Route
 	// const {match,location} = this.props.$route
  //  console.log('Page2',location);
 
 	return <div style={{background:'blue',minHeight:'200px'}}> 
               <h1>Page2</h1>
-                <Switch>
-                 {this.props.Route}
-                </Switch>
+               
+               <Routes/>
                <NavLink to="/page2/page2-1" style={{color:'#fff'}} activeStyle={{color:'red'}}>page2-1</NavLink>
                <NavLink to="/page2/page2-2" style={{color:'#fff'}} activeStyle={{color:'red'}}>page2-2</NavLink>
         

@@ -10,19 +10,6 @@ const _default = {
 	     outline:'none',
 }
 
-
-function useClickStatus(){
-   
-    let [clickStatus,setClick] = useState(null);
-
-      useEffect((s)=>{
-	 	console.log('useClickStatus update');
-      },[clickStatus])
-
-      return clickStatus;
-
-}
-
 const themes = {
   light: {
     foreground: "#000000",
@@ -36,58 +23,39 @@ const themes = {
 
 
 
-const ThemeContext = React.createContext(themes.light);
-     	
+
+
+
+const ThemeContext = React.createContext();
+
+
 
 const ButtonItems=(props)=>{
 
-               console.log(props);
-
-                console.log(window.JSON.stringify({a:1}));
-                console.log(window.JSON);
-               
                const theme = useContext(ThemeContext)
 
 		       const [name,setName] = useState('button1')
 
 		       const [name2,setName2] = useState('button2')
 		      
-		       const clickStatus = useClickStatus(1)
-		         
-		        
-		        useEffect(()=>{
-			 	// console.log(name);
-		       	},[name])
 
-		        useEffect(()=>{
-		         	console.log('456');
-		       	return()=>{
-		       		console.log('123');
-		       	}
-		       	},[name2])
-		       
-	       
 	
-		   function objToString(obj){    
-		       
-		        return window.JSON.stringify(obj);
-            }
 	     return   <div>
-	              <p>click status {clickStatus}</p>
-			       <button style={_default} onClick={()=>setName('button123')}>{name}</button>
 
-			       <button style={_default} onClick={()=>{setName2(name2+'55')}}>{name2}</button>
-			       <p> { objToString(theme) }</p>
-              </div>  
+				       <button style={_default} onClick={()=>setName('button123')}>{name}</button>
+
+				       <button style={_default} onClick={()=>{setName2(name2+'55')}}>{name2}</button>
+
+				       <button style={_default} onClick={()=>{setName2(name2+'55')}}>切换主题</button>
+				       <p> { JSON.stringify(theme) }</p>
+	              </div>  
 }
 
 export default (props)=>{
-        
+          
 
-      
-
-	  return <ThemeContext.Provider value={themes.dark}>
-	              
+	  return <ThemeContext.Provider value={themes.light}>
+	              <div>123456</div>
 	              <ButtonItems props={props}/>
 			     
 	        </ThemeContext.Provider>

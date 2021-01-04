@@ -10,24 +10,24 @@ import React from 'react'
 import { Route,Switch,Redirect  }  from 'react-router-dom';
 
 
+//获取@/view/page下页面组件
 const Pageset = {}// get all page.jsx
 
 const requireComponent = require.context('@/view/page',false,/\.jsx$/)
-//  
-requireComponent.keys().forEach((fileName) => {
 
-   const componentConfig = requireComponent(fileName);
+      requireComponent.keys().forEach((fileName) => {
 
-   const componentName = fileName.replace(/\./g, '').replace('jsx', '').replace(/\//g, '');
-    
-    Pageset[componentName] = componentConfig.default;
-})
+         const componentConfig = requireComponent(fileName);
+
+         const componentName = fileName.replace(/\./g, '').replace('jsx', '').replace(/\//g, '');
+          
+          Pageset[componentName] = componentConfig.default;
+      })
 
 console.log('路由页面',Pageset)
 
-//路由配置
-
- const myroutes = [
+//路由表配置
+const RoutesForm = [
                    {
                     path: '/notfound',
                     component:Pageset.notfound,
@@ -49,7 +49,7 @@ console.log('路由页面',Pageset)
                     mate:{
                        title:'page2'
                     },
-                    routes:[
+                    children:[
                         { path: '/page2/page2-1',
                          component: Pageset['page2-1'],
                         },
@@ -57,7 +57,8 @@ console.log('路由页面',Pageset)
                          component: Pageset['page2-2']
                         }
 
-                     ]
+                     ],
+
                   },
                    {
                     path: '/page3/:id',
@@ -65,38 +66,67 @@ console.log('路由页面',Pageset)
                     mate:{
                        title:'page3'
                     },
+                    auth:true
                   },
                  
                 ];
-//组装路由<Route> 
-const makePageRoute=(_routes,root)=>{
+
+//路由守卫（授权登录通过即渲染路由,切换标题登录态等）
+/**
+ * [checkRouteInfo description]
+ * @param  {[Object]} route [路由信息]
+ * @return {[Boolean]} pass  [通过状态]
+ * @return {[component]}component [自定义组件]
+ */
+function checkRouteInfo (route){
+
+     // route.mate.title && (document.title=route.mate.title); 
+     if(route.auth){
+        // return {pass:false,component:()=><Redirect to="/login"/>},
+        return {pass:false,component:()=><div>需要登录</div>}
+     }else{
+
+       
+       return {pass:true}
+     }
+     
+} 
+
+
+
+//解析路由表为路由页面组件<Route> ={route.path=='/'}
+const analyzeRoutes=(_routes,root)=>{
         
     if(!_routes || _routes.length==0)return [];
       
      const temp_routes  = _routes.map((route,i)=>{
               return  <Route
                        key={i}
-                       exact={route.path=='/'} 
+                       exact = {route.children?false:true}
                        path={route.path}
                        render={(routeInfo) => {     
-                             return <route.component 
-                                     Route={makePageRoute(route.routes,false).concat(route.redirect?<Redirect  to={route.redirect} key={route.redirect}/>:null)} 
+                             const checkResult = checkRouteInfo(route);
+                        
+                             return checkResult.pass?
+                                    <route.component 
+                                     Route={()=><Switch>{analyzeRoutes(route.children,false).concat(route.redirect?<Redirect to={route.redirect} key={route.redirect}/>:null)}</Switch>} 
                                      $route={routeInfo} 
                                      mate={route.mate}
-                                     />     
+                                     />:<checkResult.component/>  
                            }
                        }
                        /> 
             
         })
-
+         
        return temp_routes;
 }
 
 const PageRoutes =  ()=>{
+               const  RootRoutes =  ()=>analyzeRoutes(RoutesForm,true)
 
               return <Switch>
-                       {makePageRoute(myroutes,true)}
+                       {analyzeRoutes(RoutesForm,true)}
                        <Redirect to="/notfound" exact key="notfound"/>  
                      </Switch>
 } 
