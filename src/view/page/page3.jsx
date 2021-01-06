@@ -23,10 +23,10 @@ render(){
               <h1>Page3</h1>
                <div>
                	<Progress percent={30} />
-				    <Progress percent={50} status="active" />
-				    <Progress percent={70} status="exception" />
-				    <Progress percent={100} />
-				    <Progress percent={50} showInfo={false} />
+    				    <Progress percent={50} status="active" />
+    				    <Progress percent={70} status="exception" />
+    				    <Progress percent={100} />
+    				    <Progress percent={50} showInfo={false} />
                </div>
 	       </div>
 }

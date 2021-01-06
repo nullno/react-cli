@@ -106,4 +106,7 @@
 
 ### 问题
      
-     JSON.stringify 报错->window.JSON.stringify 就正常
+     JSON.stringify 报错->window.JSON.stringify 就正常 已解决（由于配置module.rules中的gif问题）
+
+
+### 增加hook 演示的一些常用方法
