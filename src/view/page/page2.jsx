@@ -19,7 +19,7 @@ class Page2 extends React.Component{
 	// const {match,location} = this.props.$route
  //  console.log('Page2',location);
 
-	return <div style={{background:'blue',minHeight:'200px',paddingBottom:'100px'}}> 
+	return <div style={{minHeight:'200px',paddingBottom:'100px',textAlign:'center'}}> 
               <h1>Page2</h1>
               <div style={{display:'flex',justifyContent:'space-around',background:'#000'}}>
                <NavLink to="/page2/page2-1" style={{color:'#fff'}} activeStyle={{color:'red'}}>page2-1</NavLink>

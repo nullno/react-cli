@@ -26,9 +26,10 @@ const webpackConfig  = {
     path: path.resolve(__dirname, './dist/release-'+process.env.ENV_PRODUCTION),
    },
    devServer:{  //webpack-dev-server 启动的项目托管到内存中
-     host:'127.0.0.1',
+     host:'0.0.0.0',
    	 disableHostCheck: true,
-     https:true,
+     // historyApiFallback:true,// 开启BrowserRouter模式
+     //https:true,
      compress: true,
      port: 3100,
      open:true,
@@ -42,6 +43,7 @@ const webpackConfig  = {
         }
        }
      },
+     
 
    },
    devtool: 'inline-source-map',

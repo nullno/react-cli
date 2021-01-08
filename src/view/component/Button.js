@@ -61,16 +61,17 @@ const ButtonItems=(props)=>{
 		       const [content,setContent] = useState('hi')
 
 		       const [num,setNumber] = useState(0)
-
+               
+               const [pool,setPool] = useState({})
                 
                
                const  myBotton =useRef(null)
 
-
-
 		       const ref = useRef({a:5});//存储数据
 
-		       const  inputEl = useRef(null)//创建一个ref
+		       const  inputEl1 = useRef(null),//创建一个ref
+
+		              inputEl2 = useRef(null);//创建一个ref
 
 		       const getChildSomething = useRef(null);
 
@@ -89,13 +90,13 @@ const ButtonItems=(props)=>{
 		         })   
 
                 
+                 //pool变化执行 受子组件3影响
 	             let num_once =  useMemo(()=>{
-	             
                            return num;
-	               },[content])
+	               },[pool])
+
 
 	              let num_memo =  useMemo(()=>{
-
                            return  num;
 	               },[num])
 	             
@@ -110,29 +111,43 @@ const ButtonItems=(props)=>{
 
 	                 <h1>父组件：</h1>
 						   <h2>content:{content} </h2>
-						  <h2>num:{num_memo} </h2>
-						  <h2>num(只执行一次):{num_once} </h2>
-						  
-		                 <input ref={inputEl} value={content} onChange={(el)=>{
+						 <input ref={inputEl1} value={content} onChange={(el)=>{
 		                 	 // setContent(el.target.value)
-		                 	  setContent(inputEl.current.value)
+		                 	  setContent(inputEl1.current.value)
 		                 }}/>
 						 
+						 <h2>num_memo:{num_memo} </h2>
+						 <input ref={inputEl2} value={num} onChange={(el)=>{
+		                 	 // setContent(el.target.value)
+		                 	  setNumber(inputEl2.current.value)
+		                 }}/>
+
+						  <h2>num_once(点击):{num_once} </h2>
+						  
+		              
+						
 						 <div style={{display:'flex',justifyContent:'space-between',margin:'10px 0'}}>
 						 	
-						 	 <button style={_default} onClick={()=>setContent('')}>重置(content)</button>
-
-							  <button style={_default} onClick={()=>setNumber(num+5)}>setNumber</button>
-							   
+						 	 <button style={_default} onClick={()=>{
+						 	 	setContent('')
+						 	    setNumber('')
+						 	    setPool('')
+						 	 }}>重置</button>
 
 							 <button style={_default} onClick={()=>{
 							 	getChildSomething.current.InputElFocus()
-
+                                  
 							 	console.log('ha3:',childRef);
+
+							 	setPool(childRef.current)
 							 }}>
 	                             获取组件
 							 </button>
 						 </div>
+
+						 <div style={{background:'#ccc',padding:'5px'}}>
+						 	来自子组件useImperativeHandle:<p style={{color:'green'}}>{JSON.stringify(pool)}</p> 
+						 </div> 
 						
 	                   <div style={BoxStyle}>
 		                    <h2>子组件1(num)：</h2>

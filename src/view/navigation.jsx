@@ -28,7 +28,7 @@ export default class Navigation extends React.Component{
   }
 
   render(){
-        console.log(location);
+        // console.log(location);
 
   	  return <Row className={navCss.nav}>
                <Col span={8}><NavLink to="/" exact activeClassName={navCss.actived}><NumberOutlined className={navCss.anticon}/> <span>Home</span> </NavLink> </Col>
