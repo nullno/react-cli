@@ -7,7 +7,7 @@ import React from 'react'
 import { Button  } from 'antd';
 // DatePicker,,TimePicker
 
-import MyButton from '@/view/component/Button'
+import HookDemo from '@/view/component/HookDemo'
 
 
 class Page21 extends React.Component{
@@ -20,7 +20,7 @@ class Page21 extends React.Component{
 		              <h1>这个是二级页面page2-1 </h1>
 		              <div className="ant-widget">
 
-						     <MyButton name="button123" o={{a:1,b:2}}></MyButton>
+						     <HookDemo name="button123" o={{a:1,b:2}}></HookDemo>
 		              </div>
                             
 		              <this.props.Route/>
