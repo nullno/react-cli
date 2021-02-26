@@ -1,7 +1,7 @@
 {
-  "name": "react_test",
+  "name": "react-cli",
   "version": "1.0.0",
-  "description": "测试",
+  "description": "react项目脚手架",
   "main": "src/main.js",
   "scripts": {
     "dev": "cross-env ENV_PRODUCTION=dev webpack-dev-server --config webpack.dev.js",

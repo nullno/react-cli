@@ -14,6 +14,12 @@ const definePlugin = new webpack.DefinePlugin({
     ENV_PRODUCTION:JSON.stringify(process.env.ENV_PRODUCTION)
 })
 
+//开启browserHistory
+const browserHistory = false;
+const publicPath = browserHistory?'/':'';  
+const assetsPath = browserHistory?'':'./';        
+     
+
 const autoprefixer = require('autoprefixer');
   
 const webpackConfig  = {
@@ -22,13 +28,14 @@ const webpackConfig  = {
      app: './src/main.js',  //提供约定大于配置，默认./src/index.js 不用配置入口  打包输出文件是‘dist‘
    },
    output: {
-    filename: './assets/js/[name]-[hash:6].js',
+    filename: assetsPath+'assets/js/[name]-[hash:6].js',
     path: path.resolve(__dirname, './dist/release-'+process.env.ENV_PRODUCTION),
+    publicPath
    },
    devServer:{  //webpack-dev-server 启动的项目托管到内存中
      host:'0.0.0.0',
    	 disableHostCheck: true,
-     // historyApiFallback:true,// 开启BrowserRouter模式
+     historyApiFallback:browserHistory,// 开启BrowserRouter模式
      //https:true,
      compress: true,
      port: 3100,
@@ -84,13 +91,13 @@ const webpackConfig  = {
             
           {test:/\.(ttf|woff|woff2|eot)$/,use:{
                                                 loader: 'file-loader',
-                                                options: {name: './assets/font/[name].[ext]'}
+                                                options: {name: assetsPath+'assets/font/[name].[ext]'}
                                                 }
                                              },
            
             {test:/\.(svg|png|gif|jpg|jpeg)$/,use:{
                                                     loader: 'file-loader',
-                                                    options: { name: './assets/img/[name].[ext]'}
+                                                    options: { name: assetsPath+'assets/img/[name].[ext]'}
                                                     }
                                                },
             

@@ -82,7 +82,7 @@ function checkRouteInfo (route){
 
      // route.mate.title && (document.title=route.mate.title); 
      if(route.auth){
-        // return {pass:false,component:()=><Redirect to="/login"/>},
+        // return {pass:false,component:()=><Redirect to="/login"/>}
         return {pass:false,component:()=><div>需要登录</div>}
      }else{
 
